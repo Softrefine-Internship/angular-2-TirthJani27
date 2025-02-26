@@ -1,10 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { UserDivComponent } from './user-div/user-div.component';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  standalone: false,
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'angular-2';
+  textColor = '#878877';
+  backgroundColor = '#454545';
+  @ViewChild('userDiv') userDiv!: UserDivComponent;
+  onChange() {
+    this.userDiv.changeColor(this.backgroundColor, this.textColor);
+  }
 }
